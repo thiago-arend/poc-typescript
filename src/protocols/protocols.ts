@@ -10,3 +10,5 @@ export type Book = {
 	year: number;
 	publisher: string;
 }
+
+export type CreateBook = Omit<Book, "id">;
