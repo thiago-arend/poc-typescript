@@ -1,7 +1,4 @@
-# Book Catalog
-
-
-# Rotas disponíveis:
+# Rotas disponíveis (Book Catalog):
 
 # POST: /books
 - body:
