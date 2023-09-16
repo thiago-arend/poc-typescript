@@ -8,6 +8,13 @@ async function getById(id: number): Promise<Book> {
     return result.rows[0];
 }
 
+async function getByTitleAndYear(title: string, year: number): Promise<Book> {
+    const result = await db.query<Book>(`
+        SELECT * FROM book WHERE title=$1 AND year=$2;`, [title, year]);
+    
+    return result.rows[0];
+}
+
 async function get(): Promise<Book[]> {
     const result = await db.query<Book>(`SELECT * FROM book;`);
     
@@ -29,4 +36,4 @@ async function remove(id: number): Promise<void> {
         [id]);
 }
 
-export const bookRepository = { getById, get, create, update, remove };
+export const bookRepository = { getById, getByTitleAndYear, get, create, update, remove };

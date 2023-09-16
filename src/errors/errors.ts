@@ -1,21 +1,21 @@
 function joi(message: string) {
     return {
-        type: "joiError",
+        name: "joiError",
         message
     }
 }
 
-function conflict(resource = "Item") {
+function conflict() {
     return {
-        type: "conflictError",
-        message: `${resource} already exists!`
+        name: "conflictError",
+        message: `Book already exists!`
     }
 }
 
-function notFound(resource = "Item") {
+function notFound() {
     return {
-        type: "notFoundError",
-        message: `${resource} not found!`
+        name: "notFoundError",
+        message: `Book not found!`
     }
 }
 
