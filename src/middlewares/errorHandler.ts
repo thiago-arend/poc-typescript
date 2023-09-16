@@ -3,7 +3,7 @@ import httpStatus from "http-status";
 import { ApplicationError } from "@/protocols/protocols";
 
 export default function errorHandler(error: ApplicationError | Error, req: Request, res: Response, next: NextFunction) {
-    //console.log(error);
+    console.log(error);
 
     if (error.name === "joiError") {
         return res.status(httpStatus.UNPROCESSABLE_ENTITY).send(error.message);

@@ -9,8 +9,8 @@ async function getById(id: number): Promise<Book> {
     return result;
 }
 
-async function get(): Promise<Book[]> {
-    const result = await bookRepository.get();
+async function get(title: string | undefined): Promise<Book[]> {
+    const result = await bookRepository.get(title);
 
     return result;
 }

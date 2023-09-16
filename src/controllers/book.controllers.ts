@@ -11,7 +11,8 @@ async function getById(req: Request, res: Response): Promise<void> {
 }
 
 async function get(req: Request, res: Response): Promise<void> {
-    const books = await bookService.get();
+    const { title } = req.query;
+    const books = await bookService.get(title ? title.toString() : undefined);
 
     res.status(httpStatus.OK).send(books);
 }

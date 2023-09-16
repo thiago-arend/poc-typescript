@@ -15,8 +15,16 @@ async function getByTitleAndYear(title: string, year: number): Promise<Book> {
     return result.rows[0];
 }
 
-async function get(): Promise<Book[]> {
-    const result = await db.query<Book>(`SELECT * FROM book;`);
+async function get(title: string | undefined): Promise<Book[]> {
+    const baseQuery: string = `SELECT * FROM book`;
+    let complementQuery: string = ``;
+    const values: string[] = [];
+
+    if (title) {
+        complementQuery += ` WHERE title ILIKE $1`;
+        values.push(`%${title}%`);
+    }
+    const result = await db.query<Book>( (baseQuery + complementQuery), values);
     
     return result.rows;
 }
